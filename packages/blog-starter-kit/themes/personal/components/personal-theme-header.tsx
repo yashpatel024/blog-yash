@@ -2,7 +2,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { resizeImage } from '@starter-kit/utils/image';
 import Link from 'next/link';
 import { PublicationNavbarItem } from '../generated/graphql';
+import { Button } from './button';
 import { useAppContext } from './contexts/appContext';
+import { GithubSVG } from './icons';
 import { ToggleTheme } from './toggle-theme';
 
 function hasUrl(
@@ -71,6 +73,7 @@ export const PersonalHeader = () => {
 							aria-label={`${publication.author.name}'s blog home page`}
 						>
 							{publication.author.profilePicture && (
+								// eslint-disable-next-line @next/next/no-img-element
 								<img
 									className="block h-8 w-8 rounded-full fill-current"
 									alt={publication.author.name}
@@ -89,13 +92,26 @@ export const PersonalHeader = () => {
 			</div>
 			<div className="col-span-full flex flex-row items-center justify-between gap-4 md:col-span-1 md:justify-end">
 				<nav>{navList}</nav>
-				<ToggleTheme className="hidden md:block" />
-				{/* <Button
-          label=""
-          type="outline"
-          className="!p-2"
-          icon={<NewsletterPlusSVG className="w-5 h-5 fill-current" />}
-        /> */}
+				{/* <ToggleTheme className="hidden md:block" /> */}
+				<Button
+					label="About"
+					type="outline"
+					className="!p-2 !px-4"
+					as="a"
+					href="https://yashpatel.dev"
+					target="_blank"
+					rel="noopener noreferrer"
+				/>
+				<Button
+					label=""
+					type="outline"
+					className="!p-2"
+					as="a"
+					href="https://github.com/yashpatel024"
+					target="_blank"
+					rel="noopener noreferrer"
+					icon={<GithubSVG className="h-5 w-5 fill-current" />}
+				/>
 			</div>
 		</header>
 	);
