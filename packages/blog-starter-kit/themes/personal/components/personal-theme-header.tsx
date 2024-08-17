@@ -5,7 +5,6 @@ import { PublicationNavbarItem } from '../generated/graphql';
 import { Button } from './button';
 import { useAppContext } from './contexts/appContext';
 import { GithubSVG } from './icons';
-import { ToggleTheme } from './toggle-theme';
 
 function hasUrl(
 	navbarItem: PublicationNavbarItem,
@@ -87,31 +86,53 @@ export const PersonalHeader = () => {
 							{publication.title}
 						</Link>
 					</h1>
-					<ToggleTheme className="md:hidden" />
+					<div className="flex flex-row items-center justify-between gap-4 md:col-span-1 md:hidden md:justify-end">
+						<Button
+							label="About"
+							type="outline"
+							className="!p-2 !px-4"
+							as="a"
+							href="https://yashpatel.dev"
+							target="_blank"
+							rel="noopener noreferrer"
+						/>
+						<Button
+							label=""
+							type="outline"
+							className="!p-2"
+							as="a"
+							href="https://github.com/yashpatel024"
+							target="_blank"
+							rel="noopener noreferrer"
+							icon={<GithubSVG className="h-5 w-5 fill-current" />}
+						/>
+					</div>
 				</div>
 			</div>
 			<div className="col-span-full flex flex-row items-center justify-between gap-4 md:col-span-1 md:justify-end">
 				<nav>{navList}</nav>
 				{/* <ToggleTheme className="hidden md:block" /> */}
-				<Button
-					label="About"
-					type="outline"
-					className="!p-2 !px-4"
-					as="a"
-					href="https://yashpatel.dev"
-					target="_blank"
-					rel="noopener noreferrer"
-				/>
-				<Button
-					label=""
-					type="outline"
-					className="!p-2"
-					as="a"
-					href="https://github.com/yashpatel024"
-					target="_blank"
-					rel="noopener noreferrer"
-					icon={<GithubSVG className="h-5 w-5 fill-current" />}
-				/>
+				<div className="hidden md:block md:flex flex-row items-center justify-between gap-4">
+					<Button
+						label="About"
+						type="outline"
+						className="!p-2 !px-4"
+						as="a"
+						href="https://yashpatel.dev"
+						target="_blank"
+						rel="noopener noreferrer"
+					/>
+					<Button
+						label=""
+						type="outline"
+						className="!p-2"
+						as="a"
+						href="https://github.com/yashpatel024"
+						target="_blank"
+						rel="noopener noreferrer"
+						icon={<GithubSVG className="h-5 w-5 fill-current" />}
+					/>
+				</div>
 			</div>
 		</header>
 	);
